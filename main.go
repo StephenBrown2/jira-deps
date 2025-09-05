@@ -230,6 +230,9 @@ func AddJiraNode(fc *flowchart.Flowchart, issue *jira.Issue) (node *flowchart.No
 			fmt.Sprintf("%s %s - %s", GetStatusIcon(status), issue.Key, status),
 			strings.ReplaceAll(html.EscapeString(text), "&#", "#"),
 		)
+		if len(issue.Fields.Labels) > 0 {
+			node.AddLines("Labels: " + strings.Join(issue.Fields.Labels, ", "))
+		}
 	}
 
 	return node
