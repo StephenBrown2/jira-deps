@@ -67,6 +67,7 @@ func getAuthCreds() (creds AuthCreds, err error) {
 	baseUrlInput := huh.NewInput().
 		Title("Base URL").
 		Value(&creds.BaseURL).
+		Placeholder("https://your-domain.atlassian.net").
 		Validate(func(s string) error {
 			if s == "" {
 				return fmt.Errorf("Base URL cannot be empty")
